@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- Exemplo de regex dentro html, através da input pattern -->
+    <form>
+        <input pattern="[0-9]*">
+        <input type="submit" value="Enviar dados">
+    </form>
+
+    <script>
+
+        //capturando patterns (expressões)
+        // var alvo = '11a22b33c';
+        // var exp = /(\d\d)(\w)/g;
+        // var resultado = null;
+        // while (resultado = exp.exec(alvo)) {
+        //     console.log(resultado);
+        //     console.log(exp.lastIndex);
+        // };
+
+
+        // trocando hífens por barras
+        var anoMesDia = '2007-12-31';
+        var exp = /-/g;
+        anoMesDia = anoMesDia.replace(exp, '/');
+        console.log(anoMesDia);
+
+        //padronizando valores para cálculo (a.k.a. limpando a bagunça!)
+        var arquivo = '100,200-150,200;20'; // string bagunçada, sem padrões e sem espaçamentos.
+        //var valores = arquivo.split(','); // impressão no console será ["100", "200-150", "200;20"], ou seja, não é o suficiente para arrumar a bagunça
+        var exp = /[,;-]/; //a função split aceita como critério uma RegEx
+        var valores = arquivo.split(exp); // basta passar para a função a var com a RegEx
+        console.log(valores);// impressão no console será ["100", "200", "150", "200", "20"], problema resolvido!
+
+        //extraindo um padrão
+        var codigos = 'A121B12112C12212F12G01'; // após uma letra, seguem números
+        var exp = /[A-Za-z]\d+/g // capturando o pattern via regex
+        var codigosExtraidos = codigos.match(exp); // armazenando os códigos em um array via função match
+        console.log(codigosExtraidos); // retorna no console ['A121', 'B12112', 'C12212', 'F12', 'G01']
+    </script>
+    
+</body>
+</html>
